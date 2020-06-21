@@ -18,8 +18,6 @@ public class Client {
 	@Column(name="telephone")
 	private String phone;
 	
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -76,9 +74,5 @@ public class Client {
 			return false;
 		return true;
 	}
-
-	
-	
-	
 
 }
