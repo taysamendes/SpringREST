@@ -25,7 +25,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	@Autowired
 	private MessageSource messageSource;
 
-	@ExceptionHandler(NegocioException.class)
+	@ExceptionHandler(NegocioException.class) //Quando uma exceção for lançada por algum controlador, irá cair aqui para ser tratada
 	public ResponseEntity<Object> handleNegocio(NegocioException ex, WebRequest request) {
 		var status = HttpStatus.BAD_REQUEST;
 

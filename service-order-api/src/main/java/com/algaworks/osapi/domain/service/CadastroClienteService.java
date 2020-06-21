@@ -12,18 +12,17 @@ public class CadastroClienteService {
 
 	@Autowired
 	private ClientRepository clientRepository;
-	
+
 	public Client salvar(Client client) {
 		Client clientExistent = clientRepository.findByEmail(client.getEmail());
-		
-		if(clientExistent != null && !clientExistent.equals(client)) {
+
+		if (clientExistent != null && !clientExistent.equals(client)) {
 			throw new NegocioException("E-mail já cadastrado");
 		}
-		
-		
+
 		return clientRepository.save(client);
 	}
-	
+
 	public void excluir(Long clientId) {
 		clientRepository.deleteById(clientId);
 	}
