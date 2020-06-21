@@ -1,5 +1,7 @@
 package com.algaworks.osapi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class OrderServiceController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public OrderService criar(@RequestBody OrderService orderService) {
+	public OrderService criar(@Valid @RequestBody OrderService orderService) {
 		return soService.criar(orderService);
 	}
 
