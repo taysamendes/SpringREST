@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.osapi.domain.model.Client;
 import com.algaworks.osapi.domain.repository.ClientRepository;
+import com.algaworks.osapi.domain.service.CadastroClienteService;
 
 @RestController
 @RequestMapping("/clients")
@@ -27,6 +28,9 @@ public class ClientController {
 
 	@Autowired
 	private ClientRepository clientRepository;
+
+	@Autowired
+	private CadastroClienteService cadastroCliente;
 
 	@GetMapping
 	public List<Client> listar() {
@@ -46,7 +50,7 @@ public class ClientController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Client adicionar(@Valid @RequestBody Client client) {
-		return clientRepository.save(client);
+		return cadastroCliente.salvar(client);
 	}
 
 	@PutMapping("/{clientId}")
@@ -57,7 +61,7 @@ public class ClientController {
 		}
 
 		client.setId(clientId);
-		client = clientRepository.save(client);
+		client = cadastroCliente.salvar(client);
 
 		return ResponseEntity.ok(client);
 	}
@@ -69,7 +73,7 @@ public class ClientController {
 			return ResponseEntity.notFound().build();
 		}
 
-		clientRepository.deleteById(clientId);
+		cadastroCliente.excluir(clientId);
 
 		return ResponseEntity.noContent().build();
 	}
