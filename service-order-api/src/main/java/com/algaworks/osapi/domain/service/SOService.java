@@ -1,6 +1,6 @@
 package com.algaworks.osapi.domain.service;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class SOService {
 		orderService.setClient(client);
 
 		orderService.setStatus(StatusServiceOrder.ABERTA);
-		orderService.setDateOpening(LocalDateTime.now());
+		orderService.setDateOpening(OffsetDateTime.now());
 
 		return orderServiceRepository.save(orderService);
 	}

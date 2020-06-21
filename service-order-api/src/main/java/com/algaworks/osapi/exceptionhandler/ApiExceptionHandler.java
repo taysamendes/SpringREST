@@ -1,6 +1,7 @@
 package com.algaworks.osapi.exceptionhandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		var problem = new Problem();
 		problem.setStatus(status.value());
 		problem.setTitle(ex.getMessage());
-		problem.setDateHour(LocalDateTime.now());
+		problem.setDateHour(OffsetDateTime.now());
 
 		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
 	}
@@ -54,7 +55,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		problem.setStatus(status.value());
 		problem.setTitle("Um ou mais campos estão inválidos");
-		problem.setDateHour(LocalDateTime.now());
+		problem.setDateHour(OffsetDateTime.now());
 		problem.setCampos(campos);
 
 		return super.handleExceptionInternal(ex, problem, headers, status, request);

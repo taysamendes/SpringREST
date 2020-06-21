@@ -2,6 +2,7 @@ package com.algaworks.osapi.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -44,10 +45,10 @@ public class OrderService {
 	private StatusServiceOrder status;
 	
 	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime dateOpening;
+	private OffsetDateTime dateOpening;
 	
 	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime dateClosing;
+	private OffsetDateTime dateClosing;
 
 	public Long getId() {
 		return id;
@@ -89,19 +90,19 @@ public class OrderService {
 		this.descr = descr;
 	}
 
-	public LocalDateTime getDateOpening() {
+	public OffsetDateTime getDateOpening() {
 		return dateOpening;
 	}
 
-	public void setDateOpening(LocalDateTime dateOpening) {
+	public void setDateOpening(OffsetDateTime dateOpening) {
 		this.dateOpening = dateOpening;
 	}
 
-	public LocalDateTime getDateClosing() {
+	public OffsetDateTime getDateClosing() {
 		return dateClosing;
 	}
 
-	public void setDateClosing(LocalDateTime dateClose) {
+	public void setDateClosing(OffsetDateTime dateClose) {
 		this.dateClosing = dateClose;
 	}
 
