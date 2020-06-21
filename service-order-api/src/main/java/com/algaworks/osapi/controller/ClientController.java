@@ -3,6 +3,8 @@ package com.algaworks.osapi.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,12 +45,12 @@ public class ClientController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Client adicionar(@RequestBody Client client) {
+	public Client adicionar(@Valid @RequestBody Client client) {
 		return clientRepository.save(client);
 	}
 
 	@PutMapping("/{clientId}")
-	public ResponseEntity<Client> atualizar(@PathVariable Long clientId, @RequestBody Client client) {
+	public ResponseEntity<Client> atualizar(@Valid @PathVariable Long clientId, @RequestBody Client client) {
 
 		if (!clientRepository.existsById(clientId)) {
 			return ResponseEntity.notFound().build();
